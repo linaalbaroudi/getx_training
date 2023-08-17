@@ -17,8 +17,9 @@ class CounterGetBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Counter GetBuilder"),
+        title: const Text("permanent Counter GetBuilder", maxLines: 2),
         foregroundColor: Theme.of(context).canvasColor,
+        toolbarHeight: 90,
       ),
       body: SingleChildScrollView(
         child: SizedBox(

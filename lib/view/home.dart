@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:getx_training/view/calculator/calculator.dart';
 import 'package:getx_training/view/calculator/calculator_getx.dart';
 import 'package:getx_training/view/getx_arch/counter_obx.dart';
+import 'package:getx_training/view/lazy_put/lazy_home.dart';
 
+import 'getx_arch/counter_dependencyInjection.dart';
 import 'navigation/navigation.dart';
 
 class Home extends StatelessWidget {
@@ -30,7 +32,7 @@ class Home extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Get.offAll(const Navigation());
+                  Get.offAll(() => const Navigation());
                 },
                 child: const Text("go to Navigation")),
             Padding(
@@ -52,9 +54,14 @@ class Home extends StatelessWidget {
                 child: const Text("Counter Getx")),
             ElevatedButton(
                 onPressed: () {
-                  Get.to(CounterOBX());
+                  Get.to(() => CounterOBX());
                 },
                 child: const Text("Counter Obx")),
+            ElevatedButton(
+                onPressed: () {
+                  Get.to(() => CounterDependencyInjection());
+                },
+                child: const Text("get.put(permanent) Counter ")),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Center(
@@ -64,14 +71,27 @@ class Home extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Get.to(Calculator());
+                  Get.to(() => Calculator());
                 },
                 child: const Text("Calculator GetBuilder")),
             ElevatedButton(
                 onPressed: () {
-                  Get.to(CalculatorGetx());
+                  Get.to(() => CalculatorGetx());
                 },
                 child: const Text("Calculator Getx")),
+
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Center(
+                child: Text("Lazy Put",
+                    style: Theme.of(context).textTheme.headlineLarge),
+              ),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Get.to(() => LazyHome());
+                },
+                child: const Text("lazy put example")),
           ],
         ),
       ),
