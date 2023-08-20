@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // 1- add get: to pubspec.yaml and import package
 import 'package:get/get.dart';
+import 'package:getx_training/utils/bindings.dart';
 import 'package:getx_training/view/getx_arch/counter_getBuilder.dart';
 import 'package:getx_training/view/getx_arch/counter_getx.dart';
 import 'view/home.dart';
@@ -30,17 +31,24 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const Home(),
+      initialRoute: "/",
       // routes: {
       //   "/home": (context) => const Home(),
       // },
       // 3- replace routes: {} with getPages:[]
       getPages: [
+        // add initial bindings in 3 ways:
+        // 1- in the root page GetPage(name: "/", page: ()=> const Home(), binding: AppBindings()),
+        // 2- or through the initialBinding parameter
+        // 3- or through navigation Get.to(() => Home(), binding: AppBindings());
+        GetPage(name: "/", page: ()=> const Home(), ), //binding: AppBindings()),
         GetPage(name: "/page1", page: () => const Page1()),
         GetPage(name: "/page2", page: () => const Page2()),
         GetPage(name: "/page3", page: () => const Page3()),
         GetPage(name: "/counterGetBuilder", page: () => const CounterGetBuilder()),
         GetPage(name: "/counterGetx", page: () => const CounterGetx()),
       ],
+      // initialBinding: AppBindings(),
     );
   }
 }

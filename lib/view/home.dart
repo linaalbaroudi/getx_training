@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_training/view/binding/binding_home.dart';
 import 'package:getx_training/view/calculator/calculator.dart';
 import 'package:getx_training/view/calculator/calculator_getx.dart';
 import 'package:getx_training/view/getx_arch/counter_obx.dart';
@@ -79,7 +80,6 @@ class Home extends StatelessWidget {
                   Get.to(() => CalculatorGetx());
                 },
                 child: const Text("Calculator Getx")),
-
             Padding(
               padding: const EdgeInsets.all(16),
               child: Center(
@@ -92,6 +92,18 @@ class Home extends StatelessWidget {
                   Get.to(() => LazyHome());
                 },
                 child: const Text("lazy put example")),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Center(
+                child: Text("Binding",
+                    style: Theme.of(context).textTheme.headlineLarge),
+              ),
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Get.to(() => BindingHome());
+                },
+                child: const Text("binding example")),
           ],
         ),
       ),

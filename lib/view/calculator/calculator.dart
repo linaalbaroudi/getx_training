@@ -7,7 +7,7 @@ import '../../controller/calculator/calculator_controller.dart';
 class Calculator extends StatelessWidget {
   Calculator({super.key});
 
-  // to use the controller methods without wraping the widget in getBuilder
+  // to use the controller methods without wrapping the widget in getBuilder
   // use dependency injection
   CalculatorController extController = Get.put(CalculatorController());
 
