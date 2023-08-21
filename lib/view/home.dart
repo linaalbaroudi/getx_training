@@ -164,6 +164,46 @@ class Home extends GetView<SettingsServices> { // GetView<SettingsServices> give
                   },
                   child: const Text("binding example")),
 
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Center(
+                  child: Text("dialog, snackbar, bottomSheet",
+                      style: Theme.of(context).textTheme.headlineLarge),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.defaultDialog(
+                    // customize your dialog here
+                  );
+                  print("is Dialog Open ? ${Get.isDialogOpen!}");
+                },
+                child: const Text("show Dialog"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.snackbar("Hello There!", "I can show SnackBars too",
+                    // customize your snackbar
+                  );
+                  print("is Snack Bar Open ? ${Get.isSnackbarOpen}");
+                },
+                child: const Text("show SnackBar"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Get.bottomSheet(
+                    Container(
+                      height: 100,
+                      width: double.infinity,
+                      color: Theme.of(context).canvasColor,
+                      child: Center(child: const Text("Hello There!")),
+                    ),
+                    // customize your snackbar
+                  );
+                  print("is Bottom Sheet Open ? ${Get.isBottomSheetOpen}");
+                },
+                child: const Text("show BottomSheet"),
+              ),
 
             ],
           ),
