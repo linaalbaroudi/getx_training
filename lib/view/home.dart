@@ -23,15 +23,15 @@ class Home extends GetView<SettingsServices> { // GetView<SettingsServices> give
         foregroundColor: Theme.of(context).canvasColor,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            
-            // auth middleware
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+
+              // auth middleware
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
@@ -51,12 +51,9 @@ class Home extends GetView<SettingsServices> { // GetView<SettingsServices> give
                   ),
                 ],
               ),
-            ),
-            Divider(),
+              Divider(),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
@@ -74,91 +71,129 @@ class Home extends GetView<SettingsServices> { // GetView<SettingsServices> give
                   ),
                 ],
               ),
-            ),
-            Divider(),
-            
-            
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Center(
-                  child: Text("Getx Navigation",
+              Divider(),
+
+
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Center(
+                    child: Text("Getx Navigation",
+                        style: Theme.of(context).textTheme.headlineLarge),
+                ),
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.offAll(() => const Navigation());
+                  },
+                  child: const Text("go to Navigation")),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Center(
+                  child: Text("Getx Architecture",
                       style: Theme.of(context).textTheme.headlineLarge),
+                ),
               ),
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  Get.offAll(() => const Navigation());
-                },
-                child: const Text("go to Navigation")),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Center(
-                child: Text("Getx Architecture",
-                    style: Theme.of(context).textTheme.headlineLarge),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed("/counterGetBuilder");
+                  },
+                  child: const Text("Counter GetBuilder")),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed("/counterGetx");
+                  },
+                  child: const Text("Counter Getx")),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => CounterOBX());
+                  },
+                  child: const Text("Counter Obx")),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => CounterDependencyInjection());
+                  },
+                  child: const Text("get.put(permanent) Counter ")),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Center(
+                  child: Text("Advanced",
+                      style: Theme.of(context).textTheme.headlineLarge),
+                ),
               ),
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  Get.toNamed("/counterGetBuilder");
-                },
-                child: const Text("Counter GetBuilder")),
-            ElevatedButton(
-                onPressed: () {
-                  Get.toNamed("/counterGetx");
-                },
-                child: const Text("Counter Getx")),
-            ElevatedButton(
-                onPressed: () {
-                  Get.to(() => CounterOBX());
-                },
-                child: const Text("Counter Obx")),
-            ElevatedButton(
-                onPressed: () {
-                  Get.to(() => CounterDependencyInjection());
-                },
-                child: const Text("get.put(permanent) Counter ")),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Center(
-                child: Text("Advanced",
-                    style: Theme.of(context).textTheme.headlineLarge),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => Calculator());
+                  },
+                  child: const Text("Calculator GetBuilder")),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => CalculatorGetx());
+                  },
+                  child: const Text("Calculator Getx")),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Center(
+                  child: Text("Lazy Put",
+                      style: Theme.of(context).textTheme.headlineLarge),
+                ),
               ),
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  Get.to(() => Calculator());
-                },
-                child: const Text("Calculator GetBuilder")),
-            ElevatedButton(
-                onPressed: () {
-                  Get.to(() => CalculatorGetx());
-                },
-                child: const Text("Calculator Getx")),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Center(
-                child: Text("Lazy Put",
-                    style: Theme.of(context).textTheme.headlineLarge),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => LazyHome());
+                  },
+                  child: const Text("lazy put example")),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Center(
+                  child: Text("Binding",
+                      style: Theme.of(context).textTheme.headlineLarge),
+                ),
               ),
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  Get.to(() => LazyHome());
-                },
-                child: const Text("lazy put example")),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Center(
-                child: Text("Binding",
-                    style: Theme.of(context).textTheme.headlineLarge),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => BindingHome());
+                  },
+                  child: const Text("binding example")),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Center(
+                  child: Text("dialog, snackbar, bottomSheet",
+                      style: Theme.of(context).textTheme.headlineLarge),
+                ),
               ),
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  Get.to(() => BindingHome());
-                },
-                child: const Text("binding example")),
-          ],
+              ElevatedButton(
+                  onPressed: () {
+                    Get.defaultDialog(
+                      // customize your dialog here
+                    );
+                  },
+                  child: const Text("show Dialog"),
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.snackbar("Hello There!", "I can show SnackBars too",
+                      // customize your snackbar
+                        );
+                  },
+                  child: const Text("show SnackBar"),
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.bottomSheet(
+                      Container(
+                        height: 100,
+                        width: double.infinity,
+                        color: Theme.of(context).canvasColor,
+                        child: Center(child: const Text("Hello There!")),
+                      ),
+                      // customize your snackbar
+                        );
+                  },
+                  child: const Text("show BottomSheet"),
+              ),
+
+            ],
+          ),
         ),
       ),
     );
