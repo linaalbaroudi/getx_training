@@ -6,10 +6,11 @@ class Screen1 extends StatelessWidget {
    Screen1({super.key});
 
   // final  extController = Get.put(CounterGetBuilderController(), permanent: true);
-   CounterGetBuilderController extController = Get.find();
+  final CounterGetBuilderController extController = Get.find();
 
   @override
   Widget build(BuildContext context) {
+    print("screen 1 build");
     return Scaffold(
       appBar: AppBar(
         title: const Text("Binding - screen 1"),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_training/main.dart';
 import 'package:getx_training/view/binding/binding_home.dart';
 import 'package:getx_training/view/calculator/calculator.dart';
 import 'package:getx_training/view/calculator/calculator_getx.dart';
@@ -24,6 +25,35 @@ class Home extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            
+            // auth middleware
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Text("Welcome user! you are Logged in.",
+                        style: Theme.of(context).textTheme.headlineSmall),
+                    flex: 3,
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: TextButton(
+                        onPressed: () {
+                          // auth middleware step 5:
+                          sharedPreferences!.clear();
+                          Get.offAllNamed("/");
+                        },
+                        child: const Text("Log Out")),
+                  ),
+                ],
+              ),
+            ),
+            Divider(),
+            
+            
+            
             Padding(
               padding: const EdgeInsets.all(16),
               child: Center(
