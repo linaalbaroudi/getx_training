@@ -59,7 +59,7 @@ class Page3 extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const Page3()));
-                  Get.offAll(const Home());
+                  Get.offAll( Home());
                 },
                 child: const Text("Exit")),
           ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_training/main.dart';
+import 'package:getx_training/controller/settings_controller.dart';
+import 'package:getx_training/utils/settingsServices.dart';
 import 'package:getx_training/view/binding/binding_home.dart';
 import 'package:getx_training/view/calculator/calculator.dart';
 import 'package:getx_training/view/calculator/calculator_getx.dart';
@@ -10,8 +11,9 @@ import 'package:getx_training/view/lazy_put/lazy_home.dart';
 import 'getx_arch/counter_dependencyInjection.dart';
 import 'navigation/navigation.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Home extends GetView<SettingsServices> { // GetView<SettingsServices> gives controller
+  Home({super.key});
+  final SettingsController settingsController = Get.put(SettingsController());
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class Home extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: Text("Welcome user! you are Logged in.",
+                    child: Text("${'hello'.tr}  user! you are Logged in.",
                         style: Theme.of(context).textTheme.headlineSmall),
                     flex: 3,
                   ),
@@ -42,7 +44,7 @@ class Home extends StatelessWidget {
                     child: TextButton(
                         onPressed: () {
                           // auth middleware step 5:
-                          sharedPreferences!.clear();
+                          controller.sharedPreferences.clear(); // GetView<SettingsServices> gives controller
                           Get.offAllNamed("/");
                         },
                         child: const Text("Log Out")),
@@ -51,7 +53,29 @@ class Home extends StatelessWidget {
               ),
             ),
             Divider(),
-            
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Text("lang.label".tr,
+                        style: Theme.of(context).textTheme.headlineSmall),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: TextButton(
+                        onPressed: () {
+                          settingsController.switchLang();
+                        },
+                        child: Text("switchLang".tr)),
+                  ),
+                ],
+              ),
+            ),
+            Divider(),
             
             
             Padding(

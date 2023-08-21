@@ -12,4 +12,5 @@ MVC is the most convenient architecture to use with GetX
 - calculator by GetX
 - lazy put
 - bindings
-- 
+- middleware 
+- GetxService (localization)

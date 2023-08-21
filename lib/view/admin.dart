@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_training/main.dart';
+import 'package:getx_training/utils/settingsServices.dart';
 
-class Admin extends StatelessWidget {
+class Admin extends GetView<SettingsServices> { // GetView<SettingsServices> gives controller
   const Admin({super.key});
 
   @override
@@ -20,14 +20,14 @@ class Admin extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Center(
-                child: Text("Welcome Admin! you are Logged in.",
+                child: Text("${'hello'.tr} Admin! you are Logged in.",
                     style: Theme.of(context).textTheme.headlineLarge),
               ),
             ),
             TextButton(
                 onPressed: () {
                   // auth middleware step 5:
-                  sharedPreferences!.clear();
+                  controller.sharedPreferences.clear(); //controller from GetView<SettingsServices>
                   Get.offAllNamed("/");
                 },
                 child: const Text("Log Out")),

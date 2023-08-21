@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_training/main.dart';
+import 'package:getx_training/utils/settingsServices.dart';
 
-class FallbackScreen extends StatelessWidget {
+class FallbackScreen extends GetView<SettingsServices> { // GetView<SettingsServices> gives controller
   const FallbackScreen({super.key});
 
   @override
@@ -27,7 +27,7 @@ class FallbackScreen extends StatelessWidget {
             TextButton(
                 onPressed: () {
                   // auth middleware step 5:
-                  sharedPreferences!.clear();
+                  controller.sharedPreferences.clear(); // GetView<SettingsServices> gives controller
                   Get.offAllNamed("/");
                 },
                 child: const Text("Log in")),

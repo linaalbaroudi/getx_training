@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_training/view/navigation/page2.dart';
-import 'package:getx_training/view/navigation/page3.dart';
-
 import '../home.dart';
 import 'navigation.dart';
 
@@ -59,7 +56,7 @@ class Page1 extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const Page3()));
-                  Get.offAll(const Home());
+                  Get.offAll( Home());
                 },
                 child: const Text("Exit")),
           ],
