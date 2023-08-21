@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_training/controller/settings_controller.dart';
 import 'package:getx_training/utils/settingsServices.dart';
+import 'package:getx_training/view/arguments.dart';
 import 'package:getx_training/view/binding/binding_home.dart';
 import 'package:getx_training/view/calculator/calculator.dart';
 import 'package:getx_training/view/calculator/calculator_getx.dart';
@@ -86,6 +87,14 @@ class Home extends GetView<SettingsServices> { // GetView<SettingsServices> give
                     Get.offAll(() => const Navigation());
                   },
                   child: const Text("go to Navigation")),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => Arguments(), arguments: {
+                      "date" : DateTime.now().subtract(Duration(days: 1)),
+                    });
+                  },
+                  child: const Text("Navigation with arguments")),
+
               Padding(
                 padding: const EdgeInsets.all(16),
                 child: Center(
@@ -154,43 +163,7 @@ class Home extends GetView<SettingsServices> { // GetView<SettingsServices> give
                     Get.to(() => BindingHome());
                   },
                   child: const Text("binding example")),
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Center(
-                  child: Text("dialog, snackbar, bottomSheet",
-                      style: Theme.of(context).textTheme.headlineLarge),
-                ),
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    Get.defaultDialog(
-                      // customize your dialog here
-                    );
-                  },
-                  child: const Text("show Dialog"),
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    Get.snackbar("Hello There!", "I can show SnackBars too",
-                      // customize your snackbar
-                        );
-                  },
-                  child: const Text("show SnackBar"),
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    Get.bottomSheet(
-                      Container(
-                        height: 100,
-                        width: double.infinity,
-                        color: Theme.of(context).canvasColor,
-                        child: Center(child: const Text("Hello There!")),
-                      ),
-                      // customize your snackbar
-                        );
-                  },
-                  child: const Text("show BottomSheet"),
-              ),
+
 
             ],
           ),
