@@ -41,12 +41,21 @@ class MyApp extends GetView<SettingsServices> {
     // 2- replace MaterialApp with GetMaterialApp
     return GetMaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
+      theme: ThemeData( // TODO: make your custom light theme and use it here
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple, primary: Colors.deepPurple),
         useMaterial3: true,
         appBarTheme: AppBarTheme(
-          foregroundColor: Theme.of(context).canvasColor,
-          color: Colors.deepPurple
+            foregroundColor: Theme.of(context).canvasColor,
+            color: Colors.deepPurple
+        ),
+      ),
+
+      darkTheme: ThemeData.dark().copyWith( //TODO: make your custom dark theme and use it here
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple, primary: Colors.deepPurple),
+        useMaterial3: true,
+        appBarTheme: AppBarTheme(
+            foregroundColor: Theme.of(context).canvasColor,
+            color: Colors.deepPurple
         ),
       ),
       locale: controller.locale,

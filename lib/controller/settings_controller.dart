@@ -4,17 +4,7 @@ import 'package:getx_training/utils/settingsServices.dart';
 
 class SettingsController extends GetxController{
 
-  RxBool isDark = false.obs;
   SettingsServices services = Get.find();
-
-  switchTheme(){
-    if (isDark.isTrue) {
-      isDark.value = false;
-    } else {
-      isDark.value = true;
-    }
-    services.sharedPreferences.setBool("isDark", isDark.value);
-  }
 
   switchLang(){
     Locale currentLocal = Get.locale ?? Get.deviceLocale!;
@@ -30,5 +20,14 @@ class SettingsController extends GetxController{
     Locale locale = Locale(langCode);
     Get.updateLocale(locale);
     services.sharedPreferences.setString("locale", langCode);
+  }
+
+  switchTheme(){
+    print("is dark ? ${Get.isDarkMode}");
+    if(Get.isDarkMode){
+      Get.changeTheme(ThemeData.light()); //TODO: make your custom light theme and use it here
+    }else{
+      Get.changeTheme(ThemeData.dark()); //TODO: make your custom dark theme and use it here
+    }
   }
 }

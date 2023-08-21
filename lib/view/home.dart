@@ -73,6 +73,25 @@ class Home extends GetView<SettingsServices> { // GetView<SettingsServices> give
                 ],
               ),
               Divider(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Text("Switch Theme".tr,
+                        style: Theme.of(context).textTheme.headlineSmall),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: TextButton(
+                        onPressed: () {
+                          settingsController.switchTheme();
+                        },
+                        child: Text("change".tr)),
+                  ),
+                ],
+              ),
+              Divider(),
 
 
               Padding(
