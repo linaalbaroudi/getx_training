@@ -15,3 +15,4 @@ MVC is the most convenient architecture to use with GetX
 - middleware 
 - GetxService (localization)
 - dialogs, snackBar, bottomSheet
+- arguments
